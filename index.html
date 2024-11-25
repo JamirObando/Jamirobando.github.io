@@ -8,12 +8,15 @@
   <h2>You are from:</h2>
   <p id="city">CITY</p>
   <p id="country">COUNTRY</p>
-  
+
   <h2>Your IP Address is:</h2>
   <p id="ip">IP ADDRESS</p>
 
-  <h2>The weather there is: </h2>
-  <p id="weather">WEATHER</p>
+  <h2>The weather there (by city name) is: </h2>
+  <p id="weatherCity">WEATHER BY CITY</p>
+
+  <h2>The weather there (by coordinates) is: </h2>
+  <p id="weatherCoords">WEATHER BY COORDINATES</p>
 
   <h2>Your Internet Service Provider is:</h2>
   <p id="isp">PROVIDER</p>
@@ -55,8 +58,8 @@
       });
       const weather = await responseW.json();
 
-      // Display weather info from the third API call
-      document.getElementById("weather").innerHTML = weather.list[0].weather[0].description;
+      // Display weather info from the third API call (by city)
+      document.getElementById("weatherCity").innerHTML = weather.list[0].weather[0].description;
       console.log(weather.list[0].weather[0].main);
 
       // Fourth API call: Get weather using the location (latitude and longitude from second API call)
@@ -71,7 +74,8 @@
       });
       const weather2 = await responseW2.json();
 
-      // Display the weather from the fourth API call (using lat/lon)
+      // Display weather info from the fourth API call (by coordinates)
+      document.getElementById("weatherCoords").innerHTML = weather2.weather[0].description;
       console.log(weather2.weather[0].main);
     }
 
